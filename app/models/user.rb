@@ -3,4 +3,23 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+ validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/},
+ length: { minimum: 1}
+
+ validates :phone, presence: true, length: { minimum: 3}
+
+# Validates that each email is unique
+validates_uniqueness_of :email
+
+# Before creating a user, the default role will be 'tester'
+before_create :default_level
+
+  private
+
+    def default_level
+      self.role = 'tester';
+    end
+
 end
