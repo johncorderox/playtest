@@ -22,4 +22,8 @@ before_create :default_level
       self.role = 'tester';
     end
 
+    def self.get_user_role
+      " is a #{self.role}"
+    end
+
 end
