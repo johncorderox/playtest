@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
 
 validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/},
- length: { minimum: 1}
+ length: { minimum: 2}
 
 validates :phone, presence: true, length: { minimum: 3}
 
