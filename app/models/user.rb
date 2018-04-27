@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :plays
 
- validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/},
+
+validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/},
  length: { minimum: 1}
 
- validates :phone, presence: true, length: { minimum: 3}
+validates :phone, presence: true, length: { minimum: 3}
 
 # Validates that each email is unique
 validates_uniqueness_of :email

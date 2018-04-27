@@ -1,17 +1,18 @@
 <div class="container-fluid">
   <h1>New Playtest</h1>
   <hr>
-  <form>
+  <form action="/playtests" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <div class="form-row">
       <div class="col-7">
-        <input type="text" class="form-control" placeholder="Name of Playtest" autofocus="true">
+        <input type="text" class="form-control" placeholder="Name of Playtest" name="name" autofocus="true">
       </div>
       <div class="col">
-        <select class="form-control" name="">
-          <option value="">Video Game</option>
-          <option value="">Mobile App Game</option>
-          <option value="">PC / Mac Game</option>
-          <option value="">Other</option>
+        <select class="form-control" name="category">
+          <option value="video game">Video Game</option>
+          <option value="mobile game">Mobile App Game</option>
+          <option value="pc/mac game">PC / Mac Game</option>
+          <option value="other">Other</option>
         </select>
       </div>
       <div class="col-7"> <br>
@@ -19,7 +20,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Description</span>
         </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+        <input type="hidden" name="user_id" value="<%= current_user.id %>">
       </div>
       </div>
     </div> <br><br>

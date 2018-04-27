@@ -1,18 +1,14 @@
 class PlaytestsController < ApplicationController
   def index
+    @play = Play.all
   end
 
   def new
   end
 
   def create
-    @new_playtest = Playtest.new(playtest)
-    if @new_playtest.save
-      redirect_to '/playtests'
-    else
-      redirect_to :back
-      #flash[:alert] = "All Fields Are Required!"
-    end
+    @new_playtest = Play.create( name: params[:name], category: params[:category], description: params[:description], user_id: params[:user_id])
+    redirect_to '/playtests'
   end
 
   def destroy
@@ -24,8 +20,4 @@ class PlaytestsController < ApplicationController
   def update
   end
 
-  private
-    def playtest
-      params.require(:playtest).permit()
-    end
 end

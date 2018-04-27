@@ -1,2 +1,43 @@
-<h1>Playtests#index</h1>
-<p>Find me in app/views/playtests/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col 3">
+      <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Playtests
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">In Process: </li>
+        <li class="list-group-item">Deleted Playtests: </li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
+    </div>
+    <div class="col">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">In Progress</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Deleted</a>
+        </li>
+      </ul>
+      <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Status</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @play.each do |play| %>
+      <tr>
+        <td><%= play.id %></td>
+        <td><%= play.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
