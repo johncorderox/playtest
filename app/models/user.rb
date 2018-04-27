@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :plays
+  has_many :play
 
 
 validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/},
