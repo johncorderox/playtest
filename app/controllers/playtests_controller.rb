@@ -12,6 +12,8 @@ class PlaytestsController < ApplicationController
   end
 
   def destroy
+    @delete_playtest = Play.delete(params[:id])
+    redirect_to '/playtests'
   end
 
   def edit

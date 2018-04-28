@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/playtests' => 'playtests#index'
+  get '/playtests'        => 'playtests#index'
 
-  get '/dashboard' => 'dashboard#index'
+  delete '/playtests/:id' => 'playtests#destroy'
+
+  get '/dashboard'        => 'dashboard#index'
 
   resources :playtests
 

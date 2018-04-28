@@ -6,7 +6,7 @@
         Playtests
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">In Process: </li>
+        <li class="list-group-item">Open: </li>
         <li class="list-group-item">Deleted Playtests: </li>
         <li class="list-group-item">Vestibulum at eros</li>
       </ul>
@@ -15,13 +15,16 @@
     <div class="col">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="#">In Progress</a></li>
+          <a class="nav-link active" href="#">Open</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Closed</a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Deleted</a>
         </li>
       </ul>
-      <table>
-    <thead>
+      <table class="table">
+    <thead-dark>
       <tr>
         <td>ID</td>
         <td>Name</td>
@@ -34,6 +37,18 @@
       <tr>
         <td><%= play.id %></td>
         <td><%= play.name %></td>
+        <td><%= play.status %></td>
+        <td>
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="/playtests/<%= play.id %>"><i class="far fa-folder-open"></i> Open</a>
+              <a class="dropdown-item" data-method="delete" href="playtests/<%= play.id %>"><i class="far fa-times-circle"></i> Close</a>
+            </div>
+          </div>
+      </td>
       </tr>
       <% end %>
     </tbody>
