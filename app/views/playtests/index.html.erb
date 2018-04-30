@@ -11,12 +11,13 @@
           <a class="nav-link" href="#">Deleted</a>
         </li>
       </ul>
-      <table class="table">
-    <thead-dark>
+      <table class="table table-striped">
+    <thead>
       <tr>
         <td>ID</td>
         <td>Name</td>
-        <td>Status</td>
+        <td>Access Code</td>
+        <td>Status</td>
         <td>Action</td>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
       <tr>
         <td><%= play.id %></td>
         <td><%= play.name %></td>
+        <td><%= play.access_code %></td>
         <td><%= play.status %></td>
         <td>
           <div class="btn-group" role="group">

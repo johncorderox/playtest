@@ -1,6 +1,6 @@
 class PlaytestsController < ApplicationController
   def index
-    @play = Play.all
+    @play = Play.all.order("id DESC")
   end
 
   def new
