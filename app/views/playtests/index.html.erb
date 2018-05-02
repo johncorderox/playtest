@@ -17,16 +17,19 @@
         <td>ID</td>
         <td>Name</td>
         <td>Access Code</td>
+        <td>Created Date</td>
         <td>Status</td>
         <td>Action</td>
       </tr>
     </thead>
     <tbody>
+          <h3>Playtests: <%= @playtest_table_message %></h3>
       <% @play.each do |play| %>
       <tr>
         <td><%= play.id %></td>
         <td><%= play.name %></td>
         <td><%= play.access_code %></td>
+        <td><%= play.created_at %></td>
         <td><%= play.status %></td>
         <td>
           <div class="btn-group" role="group">

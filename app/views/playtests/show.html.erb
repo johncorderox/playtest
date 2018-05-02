@@ -1,0 +1,46 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h5><%= @playtest.name %></h5>
+  </div><br>
+  Status: <%= @playtest.status %>
+  <div class="card-body">
+    <div class="row">
+    <div class="col-4">
+      <div class="card bg-info">
+        <div class="card-header text-light">
+        Playtest Info
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Access Code <input class="form-control" type="text" placeholder="<%= @playtest.access_code %>" readonly></li>
+          <li class="list-group-item">Created On: <input class="form-control" type="text" placeholder="<%= @playtest.created_at %>" readonly></li>
+          <li class="list-group-item">Created By: <input class="form-control" type="text" placeholder="<%= @playtest.user.name %>" readonly></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card bg-info">
+        <div class="card-header text-light">
+          Testers
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Playtesters:<input class="form-control" type="text" placeholder="0" readonly> </li>
+          <li class="list-group-item">Submitted Responses: <input class="form-control" type="text" placeholder="0" readonly> </li>
+          <li class="list-group-item">Removed Testers: <input class="form-control" type="text" placeholder="0" readonly></li>
+        </ul>
+      </div>
+    </div><div class="col-4">
+      <div class="card bg-info">
+        <div class="card-header text-light">
+          Description
+        </div>
+        <ul class="list-group list-group-flush">
+          <textarea class="form-control" readonly><%= @playtest.description %></textarea>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+  <button type="submit" class="btn btn-warning text-light"><i class="fas fa-sync-alt"></i> Edit This Playtest</button> <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete This Playtest</button>
+</div>
+</div>
