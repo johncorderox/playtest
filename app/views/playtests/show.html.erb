@@ -54,11 +54,11 @@
           </button>
         </h5>
       </div>
-
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <div class="row">
-            <textarea name="name" class="form-control"></textarea>
+            <textarea name="name" class="form-control"><%= @playtest.notes %></textarea>
+            <button type="submit" class="btn btn-primary">Update Notes</button>
           </div>
         </div>
       </div>
