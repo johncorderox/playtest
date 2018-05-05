@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
+#required {
 
+  color: red;
+}
 
 .register, .login {
   width: 50%;

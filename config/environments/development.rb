@@ -4,6 +4,8 @@ Rails.application.configure do
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Refresh Changes
+  config.reload_classes_only_on_change = false
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

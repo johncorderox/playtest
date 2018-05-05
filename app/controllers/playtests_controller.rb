@@ -33,4 +33,19 @@ class PlaytestsController < ApplicationController
     @playtest = Play.find(params[:id])
   end
 
+  def notes
+    @playtest_id = Play.find(params[:id])
+    if @playtest_id
+      @playtest_id.update(update_notes)
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
+  private
+
+  def update_notes
+    params.require(:notes).permit(:notes)
+  end
 end

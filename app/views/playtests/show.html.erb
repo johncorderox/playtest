@@ -50,15 +50,21 @@
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
           <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Notes:
+            Notes
           </button>
         </h5>
       </div>
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <div class="row">
-            <textarea name="name" class="form-control"><%= @playtest.notes %></textarea>
-            <button type="submit" class="btn btn-primary">Update Notes</button>
+            <div class="container-fluid">
+              <form action="/playtests/<%= @playtest.id %>" method="post">
+                <input name="_method" type="hidden" value="patch" />
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <textarea class="form-control" name=notes[notes]><%= @playtest.notes %></textarea> <br>
+                <button type="submit" class="btn btn-primary">Update Notes</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

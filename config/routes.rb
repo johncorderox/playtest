@@ -2,11 +2,17 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/playtests'        => 'playtests#index'
+  get '/applications/:id'  => 'welcome#applications'
 
-  delete '/playtests/:id' => 'playtests#destroy'
+  post '/applications'     => 'welcome#submitApplication'
 
-  get '/dashboard'        => 'dashboard#index'
+  get '/playtests'         => 'playtests#index'
+
+  patch '/playtests/:id'   => 'playtests#notes'
+
+  delete '/playtests/:id'  => 'playtests#destroy'
+
+
 
   resources :playtests
 
