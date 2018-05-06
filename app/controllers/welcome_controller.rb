@@ -3,8 +3,6 @@ class WelcomeController < ApplicationController
   end
   def applications
     @user = User.find(current_user)
-    puts "#{@user.id}"
-    puts "#{params[:id]}"
     if @user.id.to_s == params[:id]
        @codes = Play.all
     else
@@ -12,5 +10,18 @@ class WelcomeController < ApplicationController
     end
   end
   def submitApplication
+    @new_application = Application.new(submit_app)
+    if @new_application.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
+  private
+
+  def submit_app
+    params.require(:app).permit(:user_id, :play_id, :answerwhy, :experience, :qa,
+      :favoritegame, :message)
   end
 end
