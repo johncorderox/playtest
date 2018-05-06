@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :plays
+  has_many :applications
 
 
 validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/},

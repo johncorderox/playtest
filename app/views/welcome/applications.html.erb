@@ -1,101 +1,97 @@
 <div class="container">
-  <h2>Playtest Application</h2>
-  <hr>
-  <h5>Hey <b><%= @user.name %></b>, Please Answer All Questions To Your Best Ability.</h5>
-  <br><br>
-  <div class="field">
-    <div class="row">
-      <label for="test-name">Which Playtest Are You Applying For? <span id="required">*</span></label>
-      <select class="form-control" name="" id="test-name">
-        <% @codes.each do |code| %>
-        <option><%= code.access_code %></option>
-        <% end %>
-      </select>
+    <h2>Playtest Application</h2>
+    <hr>
+    <div class="col-12">
+      <h5>Hey <b><%= @user.name %></b>! Please answer all questions to the best of your ability.
+      </h5> <br>
     </div>
-  </div>
-
-  <div class="field">
-    <div class="row">
-      <label for="">Why Do You Want To Be A Playtester?<span id="required">*</span></label>
-      <textarea name="name" class="form-control"></textarea>
-    </div>
-  </div>
-    <div class="row">
+    <form action="/applications" method="POST" id="app-form">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="app[user_id]" value="<%= current_user.id %>">
       <div class="col-6">
-        Playtesting Experience<span id="required">*</span><br>
+        <label for="test-name">Which Playtest Are You Applying For! <span id="required">*</span></label>
+        <select class="form-control" name="app[play_id]" id="test-name">
+          <% @codes.each do |code| %>
+          <option value="<%= code.id %>"><%= code.access_code %></option>
+          <% end %>
+        </select>
+      </div> <br>
+      <div class="col-8">
+        <label for="">Why Do You Want To Be A Playtester?<span id="required">*</span></label>
+        <textarea name="app[answerwhy]" class="form-control"></textarea>
+      </div> <br>
+      <div class="col-6">
+         Playtesting Experience<span id="required">*</span><br> <br>
+         <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="app[experience]" id="inlineRadio1" value="Beginnner">
+         <label class="form-check-label" for="inlineRadio1">Beginnner</label>
+       </div>
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="app[experience]" id="inlineRadio2" value="Intermediate">
+         <label class="form-check-label" for="inlineRadio2">Intermediate</label>
+       </div>
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="app[experience]" id="inlineRadio2" value="Advanced">
+         <label class="form-check-label" for="inlineRadio2">Advanced</label>
+       </div>
+     </div> <br><br>
+     <div class="col-6">
+        QA Testing Experience<span id="required">*</span><br> <br>
         <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <input class="form-check-input" type="radio" name="app[qa]" id="inlineRadio1" value="Beginnner">
         <label class="form-check-label" for="inlineRadio1">Beginnner</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <input class="form-check-input" type="radio" name="app[qa]" id="inlineRadio2" value="Intermediate">
         <label class="form-check-label" for="inlineRadio2">Intermediate</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <input class="form-check-input" type="radio" name="app[qa]" id="inlineRadio2" value="Advanced">
         <label class="form-check-label" for="inlineRadio2">Advanced</label>
       </div>
-      </div>
+    </div> <br><br>
+      <div class="col-8">
+        <label for="">What's Your Favorite Game And Why?<span id="required">*</span></label><br>
+        <input type="text" name="app[favoritegame]" class="form-control">
+      </div> <br>
+      <div class="col-12">
+        <label for="">What Genre Of Games Do You Like To Play?<span id="required">*</span></label>
+       <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Beginnner">
+     <label class="form-check-label" for="inlineCheckbox1">Action</label>
+   </div>
+   <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Intermediate">
+     <label class="form-check-label" for="inlineCheckbox2">Adventure</label>
+   </div>
+   <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Advanced">
+     <label class="form-check-label" for="inlineCheckbox2">Education</label>
+   </div>
+   <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+     <label class="form-check-label" for="inlineCheckbox2">RPG's</label>
+   </div>
+   <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+     <label class="form-check-label" for="inlineCheckbox2">Racing</label>
+   </div>
+   <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+     <label class="form-check-label" for="inlineCheckbox2">Puzzle</label>
+   </div>
+   <div class="form-check form-check-inline">
+     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+     <label class="form-check-label" for="inlineCheckbox2">VR</label>
+   </div>
+ </div> <br>
       <div class="col-6">
-        QA Testing Experience<span id="required">*</span><br>
-        <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-        <label class="form-check-label" for="inlineRadio1">Beginnner</label>
+        <label for="app-notes">Anything Else You Want To Tell Us?</label>
+        <textarea name="app[message]" id="app-notes" class="form-control"></textarea>
+      </div> <br>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit Application</button>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">Intermediate</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">Advanced</label>
-      </div>
-      </div>
-    </div>
-    <div class="row">
-        <label for="">What's Your Favorite Game And Why?<span id="required">*</span></label>
-        <input type="text" name="" class="form-control">
-    </div>
-
-  <div class="field">
-    <div class="row">
-      <label for="">What Genre Of Games Do You Like To Play?<span id="required">*</span></label>
-        <input type="text" name="" class="form-control">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">Action</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">Adventure</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">Education</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">RPG's</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">Racing</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">Puzzle</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">VR</label>
-  </div>
-  </div>
-  <div class="row">
-      <label for="app-notes">Anything You Want To Tell Us?</label>
-      <textarea name="name" id="app-notes" class="form-control"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit Application</button>
+    </form>
+    <hr>
 </div>

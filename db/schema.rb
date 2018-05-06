@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429005851) do
+ActiveRecord::Schema.define(version: 20180506023828) do
+
+  create_table "applications", force: :cascade do |t|
+    t.text     "answerwhy"
+    t.string   "experience"
+    t.string   "qa"
+    t.string   "favoritegame"
+    t.string   "genre"
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "play_id"
+    t.string   "status"
+    t.string   "status_by"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["play_id"], name: "index_applications_on_play_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
 
   create_table "plays", force: :cascade do |t|
     t.string   "name"
