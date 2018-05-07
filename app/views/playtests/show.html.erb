@@ -23,9 +23,19 @@
           Testers
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Playtesters:<input class="form-control" type="text" placeholder="0" readonly> </li>
-          <li class="list-group-item">Submitted Responses: <input class="form-control" type="text" placeholder="0" readonly> </li>
-          <li class="list-group-item">Removed Testers: <input class="form-control" type="text" placeholder="0" readonly></li>
+          <li class="list-group-item">Playtesters:
+            <% if @testers.blank? %>
+            <input class="form-control" type="text" placeholder="No Playtesters..." readonly>
+            <% else %>
+            <select class="form-control" id="test-name">
+              <% @testers.each do |testers| %>
+                  <option><%= testers.user.name %></option>
+              <% end %>
+            <% end %>
+            </select>
+          </li>
+          <li class="list-group-item">New Applications: <input class="form-control" type="text" placeholder="<%= @applications.count %>" readonly> </li>
+          <li class="list-group-item">Closed Applications: <input class="form-control" type="text" placeholder="0" readonly></li>
         </ul>
       </div>
     </div><div class="col-4">

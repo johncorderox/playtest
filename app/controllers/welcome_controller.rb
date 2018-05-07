@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   def applications
     @user = User.find(current_user)
     if @user.id.to_s == params[:id]
-       @codes = Play.all
+       @codes = Play.all.order("id DESC")
     else
       redirect_to root_path
     end

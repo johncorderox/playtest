@@ -9,10 +9,9 @@ class Play < ApplicationRecord
   before_create :new_access_code
 
   # This function will generate a new access code
-
   def generate_access_code
     @new_access_code = rand(1...999999).to_s
-    @new_access_code << "TEST"
+    @new_access_code << "_TEST"
   end
 
   private

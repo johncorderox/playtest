@@ -4,3 +4,16 @@
   <%= link_to "Register", new_user_registration_path %> |
   <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
 </div>
+<hr>
+
+<h1>dev notes</h1>
+<% if current_user %>
+current_user = <%= current_user %> <br>
+current_user.id = <%= current_user.id %> <br>
+<% end %>
+
+to do: <br>
+in application view select option, display all test accesss code where
+they have NOT applied to. <br>
+
+Play.all.where.not <br>
