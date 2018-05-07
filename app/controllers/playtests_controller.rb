@@ -31,6 +31,8 @@ class PlaytestsController < ApplicationController
 
   def show
     @playtest = Play.find(params[:id])
+    @applications = Application.where(play_id: params[:id]).where(status: "New")
+    @testers = Tester.where(play_id: params[:id])
   end
 
   def notes
