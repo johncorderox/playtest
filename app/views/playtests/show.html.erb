@@ -55,30 +55,75 @@
 </div>
 </div>
 <div class="container">
+
+
+
+
+
+
   <div id="accordion">
     <div class="card">
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
           <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Notes
+            Applications
           </button>
         </h5>
       </div>
+
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
-          <div class="row">
-            <div class="container-fluid">
-              <form action="/playtests/<%= @playtest.id %>" method="post">
-                <input name="_method" type="hidden" value="patch" />
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                <textarea class="form-control" name=notes[notes]><%= @playtest.notes %></textarea> <br>
-                <button type="submit" class="btn btn-primary">Update Notes</button>
-              </form>
+          <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Email</td>
+              <td>Status</td>
+              <td>Action/Status</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @applications.each do |app| %>
+            <tr>
+              <td><%= app.user.name %></td>
+              <td><%= app.user.email %></td>
+              <td><%= app.status %></td>
+              <td>
+                <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">View Application</a>
+                <a class="dropdown-item" href="#">Delete Application</a>
+              </div>
             </div>
-          </div>
+            </td>
+            <% end %>
+          </tbody>
+        </table>
         </div>
       </div>
     </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Admin Notes
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <form action="/playtests/<%= @playtest.id %>" method="post">
+            <input name="_method" type="hidden" value="patch" />
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <textarea class="form-control" name=notes[notes]><%= @playtest.notes %></textarea> <br>
+            <button type="submit" class="btn btn-primary">Update Notes</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+  <hr>
 </div>
