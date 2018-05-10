@@ -1,2 +1,30 @@
-<h1>Applications#show</h1>
-<p>Find me in app/views/applications/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <h1>View Application<h1>
+    </div>
+    <div class="col-4">
+      <button type="submit" class="btn btn-success">Accept Applicant</button>
+      <button type="submit" class="btn btn-danger">Deny Applicant</button>
+    </div>
+  </div>
+  <hr>   <br>
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          Applicant Information:
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+          Name: <b><%= @show_application.user.name %></b><br>
+          Email: <b><%= @show_application.user.email %></b><br>
+          Phone Number: <b><%= @show_application.user.phone %></b><br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+    </div>
+  </div>
+</div>

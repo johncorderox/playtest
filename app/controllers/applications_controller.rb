@@ -23,6 +23,7 @@ class ApplicationsController < ApplicationController
   end
 
   def show
+    @show_application = Application.find(params[:id])
   end
 
   def destroy
