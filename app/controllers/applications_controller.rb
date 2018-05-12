@@ -27,6 +27,9 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
+    @playtest.id = Application.find(params[:id]).play_id
+    @delete_application = Application.find(params[:id]).delete
+    redirect_to playtests_path(@playtest.id)
   end
 
   private

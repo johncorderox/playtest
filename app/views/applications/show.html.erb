@@ -4,8 +4,13 @@
       <h1>View Application<h1>
     </div>
     <div class="col-4">
-      <button type="submit" class="btn btn-success">Accept Applicant</button>
-      <button type="submit" class="btn btn-danger">Deny Applicant</button>
+      <form action="/determine_applicant_status" method="post" id="form-app">
+      <button type="submit" class="btn btn-success" value="a" name="status">Accept Applicant</button>
+    </form>
+    <form actions="/applications/<%= @show_application.id %>" method="POST" id="form-app">
+        <%= button_to "Deny Applicant", { controller: :applications, action: :destroy, id: params[:id]},
+       data: { confirm: "Are you sure you want to delete?" }, method: :delete, class: "btn btn-danger" %>
+    </form>
     </div>
   </div>
   <hr>   <br>
@@ -22,9 +27,45 @@
           Phone Number: <b><%= @show_application.user.phone %></b><br>
           </p>
         </div>
+        <div class="card-header">
+          Applicant Status:
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= @show_application.status %></b><br>
+          </p>
+        </div>
       </div>
     </div>
     <div class="col-8">
+    <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Why do you want to be a playtester? <br>
+        ~<b><%=@show_application.answerwhy %></b>
+      </li>
+      <li class="list-group-item">
+        Playtesting Experience: <br>
+        ~<b><%=@show_application.experience %></b>
+      </li>
+      <li class="list-group-item">
+        QA Experience: <br>
+        ~<b><%=@show_application.qa %></b>
+      </li>
+      <li class="list-group-item">
+        What is your Favorite Game and Why? <br>
+        ~<b><%=@show_application.favoritegame %></b>
+      </li>
+      <li class="list-group-item">
+        What genre of games do you like to play? <br>
+        ~<b></b>
+      </li>
+      <li class="list-group-item">
+        Notes:  <br>
+        ~<b><%=@show_application.message %></b>
+      </li>
+    </ul>
+  </div>
     </div>
   </div>
 </div>
