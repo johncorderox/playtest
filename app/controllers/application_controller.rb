@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
     '/applications/<%= current_user.id %>'
   end
 
+  def redirect_to_associated_playtest
+  end
+
+  end
+
 end

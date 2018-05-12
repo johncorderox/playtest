@@ -4,7 +4,10 @@
       <h1>View Application<h1>
     </div>
     <div class="col-4">
-      <form action="/determine_applicant_status" method="post" id="form-app">
+      <form action="/testers" method="POST" id="form-app">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="user_id" value="<%= @show_application.user.id %>">
+        <input type="hidden" name="play_id" value="<%= @show_application.play_id %>">
       <button type="submit" class="btn btn-success" value="a" name="status">Accept Applicant</button>
     </form>
     <form actions="/applications/<%= @show_application.id %>" method="POST" id="form-app">

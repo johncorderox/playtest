@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :applications
   resources :playtests
+  resources :testers
 
   devise_for :users
 
