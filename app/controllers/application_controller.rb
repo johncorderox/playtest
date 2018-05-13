@@ -10,12 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
-    '/applications/<%= current_user.id %>'
+    '/applications/new'
   end
 
-  def redirect_to_associated_playtest
-  end
-
+  def redirect_to_associated_playtest(playtest_id)
+   redirect_to "/playtests/#{playtest_id}"
   end
 
 end

@@ -29,7 +29,7 @@ class ApplicationsController < ApplicationController
   def destroy
     @playtest_id = Application.find(params[:id]).play_id
     @delete_application = Application.find(params[:id]).delete
-    redirect_to '/playtests/'+ "#{@playtest_id}"
+    redirect_to_associated_playtest(@playtest_id)
   end
 
   private

@@ -9,7 +9,7 @@ class TestersController < ApplicationController
     @playtest_id = params[:play_id]
     @new_tester = Tester.create(user_id: params[:user_id], play_id: params[:play_id])
     if @new_tester.save
-      redirect_to '/playtests/'+ "#{@playtest_id}"
+      redirect_to_associated_playtest(@playtest_id)
     end
   end
 
