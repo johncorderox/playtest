@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get '/company'           => 'company#index'
+
+  get '/company/edit'      => 'company#edit'
+
   get '/playtests'         => 'playtests#index'
 
   patch '/playtests/:id'   => 'playtests#notes'
