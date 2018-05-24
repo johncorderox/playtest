@@ -39,6 +39,11 @@ class PlaytestsController < ApplicationController
     @playtest_id = Play.find(params[:id])
     if @playtest_id
       @playtest_id.update(update_notes)
+
+      new_notes_file = File.new("public/notes/playtest_#{@playtest_id.name}.txt", "w")
+      new_notes_file.puts(@playtest_id.notes)
+      new_notes_file.close
+
       redirect_to :back
     else
       redirect_to :back
