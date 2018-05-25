@@ -1,3 +1,8 @@
-<h1>[Company Name Here]</h1><br>
+<div class="container">
+  <h2>Edit Company Settings</h2>
+  <%= form_for @company do |f| %>
+     <%= f.text_field :company %>
+     <%= f.submit "Submit" %>
+  <% end %>
 
-Upload Company Logo:
+</div>

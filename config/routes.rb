@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/company/edit'      => 'company#edit'
 
+  delete '/company/dap'    => 'company#destroy_all_playtests'
+
   get '/playtests'         => 'playtests#index'
 
   patch '/playtests/:id'   => 'playtests#notes'

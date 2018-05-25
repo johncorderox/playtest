@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Company Profile</h2>
+  <hr>
+  You can edit company settings <%= link_to "here", company_edit_path %> <br>
+  <br>
+  You can also do a number of admin queries below: <br><br>
+  <%= form_tag '/company/dap', method: "delete" %>
+    <%= submit_tag "Delete All Playtests", class: "btn btn-danger", data: { confirm: "Are you sure you want to delete? There is NO reversal ! ! !" } %> 
+</div>
