@@ -3,6 +3,7 @@ class CompanyController < ApplicationController
   end
 
   def edit
+    @company = Company.last
   end
 
   def show
@@ -12,7 +13,8 @@ class CompanyController < ApplicationController
   end
 
   def update
-     @company.update(company_change)
+     Company.update(company_change)
+     redirect_to :back
   end
 
   def destroy
@@ -26,7 +28,7 @@ class CompanyController < ApplicationController
   private
 
   def company_change
-     params.require(:company).permit(:company)
+     params.require(:company).permit(:name)
   end
 
 end

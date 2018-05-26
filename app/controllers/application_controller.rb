@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :get_company_name
+
+  def get_company_name
+    @company = Company.last
+  end
+
   protected
 
   def configure_permitted_parameters
