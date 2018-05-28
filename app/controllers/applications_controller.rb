@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
 
   def new
     @user = current_user
-    @codes = Play.all.order("id DESC")
+    @codes = Play.all.order("id DESC").where(status: "Open")
   end
 
   def create

@@ -11,8 +11,12 @@
       <div class="col-6">
         <label for="test-name">Which Playtest Are You Applying For! <span id="required">*</span></label>
         <select class="form-control" name="app[play_id]" id="test-name">
+          <% if @codes.empty? %>
+          <option>There are no playtests to apply for...</option>
+          <% else %>
           <% @codes.each do |code| %>
           <option value="<%= code.id %>"><%= code.access_code %></option>
+          <% end %>
           <% end %>
         </select>
       </div> <br>
