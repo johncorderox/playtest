@@ -10,7 +10,11 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <% if @company %>
   <a class="navbar-brand" href="#"><%= @company.name %></a>
+  <% else %>
+    <a class="navbar-brand" href="#">Home</a>
+    <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -39,7 +43,7 @@
         <a class="nav-link" href="/company"><i class="fas fa-building"></i> Company Profile </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/logs"><i class="fas fa-building"></i> Logs </a>
+        <a class="nav-link" href="/logs"></i> Logs </a>
       </li>
     </ul>
 

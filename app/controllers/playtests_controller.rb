@@ -1,6 +1,16 @@
 class PlaytestsController < ApplicationController
   before_action :authenticate_user!
 
+  def closeapp
+    @close = Play.find(params[:playtest_id]).update(status: "In Process")
+    redirect_to :back
+  end
+
+  def openapp
+    @open = Play.find(params[:playtest_id]).update(status: "Open")
+    redirect_to :back
+  end
+
   def index
     @play = Play.all.order("id DESC")
     if @play.blank?
