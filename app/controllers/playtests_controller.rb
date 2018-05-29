@@ -25,7 +25,7 @@ class PlaytestsController < ApplicationController
 
   def create
     @new_playtest = Play.create( name: params[:name], category: params[:category], description: params[:description], user_id: params[:user_id])
-    redirect_to '/playtests'
+    redirect_to root_path
   end
 
   def destroy

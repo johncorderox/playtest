@@ -1,2 +1,35 @@
-<h1>Testers#index</h1>
-<p>Find me in app/views/testers/index.html.erb</p>
+<div class="container">
+  <h2>Testers: <%= @testers.count %></h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone Number</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @testers.each do |tester| %>
+      <tr>
+        <td><%= tester.id %></td>
+        <td><%= tester.user.name %></td>
+        <td><%= tester.user.email %></td>
+        <td><%= tester.user.phone %></td>
+        <td>
+          <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Options
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="">View User</a>
+          <a class="dropdown-item" href="/testers/<%= tester.id %>", data-method="delete">Delete User</a>
+        </div>
+        </div>
+        </td>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

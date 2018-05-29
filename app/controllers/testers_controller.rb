@@ -1,5 +1,6 @@
 class TestersController < ApplicationController
   def index
+    @testers = Tester.all
   end
 
   def new
@@ -20,6 +21,8 @@ class TestersController < ApplicationController
   end
 
   def destroy
+    Tester.find(params[:id]).delete
+    redirect_to :back
   end
 
 end
