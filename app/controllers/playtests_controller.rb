@@ -24,12 +24,12 @@ class PlaytestsController < ApplicationController
   end
 
   def create
-    @new_playtest = Play.create( name: params[:name], category: params[:category], description: params[:description], user_id: params[:user_id])
+    @new_playtest = Play.create(name: params[:name], category: params[:category], description: params[:description], user_id: params[:user_id])
     redirect_to root_path
   end
 
   def destroy
-    @delete_playtest = Play.delete(params[:id])
+    @delete_playtest = Play.destroy(params[:id])
     redirect_to '/playtests'
   end
 
@@ -42,6 +42,7 @@ class PlaytestsController < ApplicationController
   def show
     @playtest = Play.find(params[:id])
     @applications = Application.where(play_id: params[:id]).where(status: "New")
+    @applications_rejected = Application.where(play_id: params[:id]).where(status: "Rejected")
     @testers = Tester.where(play_id: params[:id])
   end
 

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<h2><%= @company.name %> Logs</h2>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Description</td>
+      <td>Error Code</td>
+      <td>Status</td>
+      <td>Timestamp</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @logs.each do |logs| %>
+    <% if logs.status == "Success" %>
+    <tr class="table-success">
+    <% elsif logs.status == "Fail" %>
+    <tr class="table-danger">
+    <% elsif logs.status == "Warning" %>
+    <tr class="table-warning">
+    <% else %>
+    <tr>
+  <% end %>
+      <td><%= logs.id %></td>
+      <td><%= logs.description %></td>
+      <td><%= logs.error_code %></td>
+      <td><%= logs.status %></td>
+      <td><%= logs.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

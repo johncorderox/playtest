@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'logs/index'
+
+  get 'logs/destroy'
+
   root 'welcome#index'
 
   get '/company'              => 'company#index'
@@ -23,7 +27,8 @@ Rails.application.routes.draw do
   resources :applications
   resources :playtests
   resources :testers
-
+  resources :logs
+  
   devise_for :users
 
 end

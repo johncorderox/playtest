@@ -29,7 +29,7 @@ class ApplicationsController < ApplicationController
 
   def destroy
     @playtest_id = Application.find(params[:id]).play_id
-    @delete_application = Application.find(params[:id]).delete
+    Application.find(params[:id]).update(status: "Rejected")
     redirect_to_associated_playtest(@playtest_id)
   end
 
@@ -37,7 +37,7 @@ class ApplicationsController < ApplicationController
 
   def submit_app
     params.require(:app).permit(:user_id, :play_id, :answerwhy, :experience, :qa,
-      :favoritegame, :message)
+      :favoritegame, :genre, :message)
   end
 
 end

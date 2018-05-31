@@ -9,6 +9,7 @@ class Application < ApplicationRecord
 
   def add_new_to_application_status
     self.status = "New"
+    self.status_by = "System"
   end
 
 end
