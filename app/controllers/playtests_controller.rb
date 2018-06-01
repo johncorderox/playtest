@@ -51,9 +51,25 @@ class PlaytestsController < ApplicationController
     if @playtest_id
       @playtest_id.update(update_notes)
 
-      new_notes_file = File.new("public/notes/playtest_#{@playtest_id.name}.txt", "w")
+      @name_of_playtest = @playtest_id.name.parameterize('_')
+      new_notes_file = File.new("public/notes/playtest_#{@name_of_playtest}.txt", "w")
       new_notes_file.puts(@playtest_id.notes)
       new_notes_file.close
+
+      #
+       s3 = Aws::S3::Resource.new(region: 'us-west-2')
+      #
+      # my_bucket = s3.bucket("playtest88")
+      # my_bucket.create
+
+      file = "public/notes/playtest_#{@name_of_playtest}.txt"
+      bucket = 'playtest88'
+
+      name = File.basename(file)
+
+      obj = s3.bucket(bucket).object(name)
+
+      obj.upload_file(file)
 
       redirect_to :back
     else
