@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530024807) do
+ActiveRecord::Schema.define(version: 20180602010255) do
+
+  create_table "amazons", force: :cascade do |t|
+    t.string   "region"
+    t.string   "bucket"
+    t.string   "access_key_id"
+    t.string   "secret_access_key"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "applications", force: :cascade do |t|
     t.text     "answerwhy"

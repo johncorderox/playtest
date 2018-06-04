@@ -15,8 +15,8 @@ class Play < ApplicationRecord
   # Before creating a new playtest, a log will be recorded
   before_create :create_playtest_log
 
-  # After saving a playtest log, create a success message
-  after_save :success_playtest_log
+  # Before creating a new playtest, create a success message
+  before_create :success_playtest_log
 
   # Before destroying a playtest, a log is recorded
   before_destroy :delete_playtest_log

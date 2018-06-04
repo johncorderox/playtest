@@ -2,8 +2,17 @@ class CompanyController < ApplicationController
   def index
   end
 
+  def aws
+    @amazon = Amazon.first
+    if @amazon.blank?
+      Amazon.create(aws_update)
+      redirect_to :back
+    end
+  end
+
   def edit
     @company = Company.last
+    @amazon_check = Amazon.first
   end
 
   def show
@@ -29,6 +38,10 @@ class CompanyController < ApplicationController
 
   def company_change
      params.require(:company).permit(:name)
+  end
+
+  def aws_update
+    params.require(:aws).permit(:region, :bucket, :access_key_id, :secret_access_key)
   end
 
 end

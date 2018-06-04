@@ -3,11 +3,13 @@ class PlaytestsController < ApplicationController
 
   def closeapp
     @close = Play.find(params[:playtest_id]).update(status: "In Process")
+    Log.create(description: "Playtest ID:#{params[:playtest_id]} was marked In Process", error_code: 200, status: "PASS")
     redirect_to :back
   end
 
   def openapp
     @open = Play.find(params[:playtest_id]).update(status: "Open")
+    Log.create(description: "Playtest ID:#{params[:playtest_id]} was marked open", error_code: 200, status: "PASS")
     redirect_to :back
   end
 
@@ -56,18 +58,19 @@ class PlaytestsController < ApplicationController
       new_notes_file.puts(@playtest_id.notes)
       new_notes_file.close
 
-      #
-       s3 = Aws::S3::Resource.new(region: 'us-west-2')
-      #
-      # my_bucket = s3.bucket("playtest88")
-      # my_bucket.create
-
       file = "public/notes/playtest_#{@name_of_playtest}.txt"
-      bucket = 'playtest88'
+
+
+      @amazon = Amazon.first
+
+      Aws.config.update({credentials: Aws::Credentials.new(
+        @amazon.access_key_id, @amazon.secret_access_key)})
+        
+      s3 = Aws::S3::Resource.new(region: 'us-west-2')
 
       name = File.basename(file)
 
-      obj = s3.bucket(bucket).object(name)
+      obj = s3.bucket(@amazon.bucket).object(name)
 
       obj.upload_file(file)
 

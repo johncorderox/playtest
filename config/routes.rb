@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   delete '/playtests/:id'         => 'playtests#destroy'
 
+  patch '/company/aws'            => 'company#aws'
+
   resources :applications
   resources :playtests
   resources :testers

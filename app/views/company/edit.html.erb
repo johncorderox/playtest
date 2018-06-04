@@ -9,4 +9,21 @@
     <input type="text" name="company[name]" class="form-control"><br>
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
+  <hr>
+<h2>Amazon S3 Data Storage</h2><br>
+ <small id="emailHelp" class="form-text text-muted">S3 only works if the application suite has been configured with AWS crendentials.</small>
+<% if @amazon_check.blank? %>
+  <b>You have not set any of your credentials. Please set them below!</b>
+  <form class="" action="/company/aws" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input name="_method" type="hidden" value="patch" />
+    Region<input type="text" name="aws[region]" value="" class="form-control"> <br>
+    Bucket Name<input type="text" name="aws[bucket]" value="" class="form-control"><br>
+    Access Key<input type="password" name="aws[access_key_id]" value="" class="form-control"><br>
+    Secret Access Key<input type="password" name="aws[secret_access_key]" value="" class="form-control"><br>
+    <button type="submit" class="btn btn-primary">Update AWS</button>
+  </form>
+  <% else %>
+  <% end %>
+  <br><br>
 </div>
