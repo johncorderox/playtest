@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   get '/playtests'                => 'playtests#index'
 
+  post '/playtests/:id/backup'    => 'playtests#backup'
+
   patch '/playtests/openapp'      => 'playtests#openapp'
+
+  patch '/playtests/:id/owner'        => 'playtests#owner'
 
   patch '/playtests/closeapp'     => 'playtests#closeapp'
 

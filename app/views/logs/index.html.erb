@@ -19,6 +19,8 @@
     <tr class="table-danger">
     <% elsif logs.status == "Warning" %>
     <tr class="table-warning">
+    <% elsif logs.status == "Saved" %>
+    <tr class="table-primary">
     <% else %>
     <tr>
   <% end %>
@@ -26,7 +28,7 @@
       <td><%= logs.description %></td>
       <td><%= logs.error_code %></td>
       <td><%= logs.status %></td>
-      <td><%= logs.created_at %></td>
+      <td><%= logs.created_at.strftime("%B %d %Y - %l:%M %p") %></td>
     </tr>
     <% end %>
   </tbody>

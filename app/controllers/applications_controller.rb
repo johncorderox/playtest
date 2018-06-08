@@ -11,7 +11,7 @@ class ApplicationsController < ApplicationController
   def create
     @new_application = Application.new(submit_app)
     if @new_application.save
-      redirect_to applications_path
+      redirect_to root_path
     else
       redirect_to :back
     end

@@ -36,7 +36,7 @@
         <td><%= play.id %></td>
         <td><%= play.name %></td>
         <td><%= play.access_code %></td>
-        <td><%= play.created_at %></td>
+        <td><%= play.created_at.strftime("%B %d %Y - %l:%M %p") %></td>
         <td><%= play.status %></td>
         <td>
           <div class="btn-group" role="group">
@@ -53,7 +53,7 @@
       </tr>
       <% end %>
     </tbody>
-  </table>
+   </table>
     </div>
   </div>
 </div>

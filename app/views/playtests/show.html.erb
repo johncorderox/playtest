@@ -12,7 +12,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Access Code <input class="form-control" type="text" placeholder="<%= @playtest.access_code %>" readonly></li>
-          <li class="list-group-item">Created On: <input class="form-control" type="text" placeholder="<%= @playtest.created_at %>" readonly></li>
+          <li class="list-group-item">Created On: <input class="form-control" type="text" placeholder="<%= @playtest.created_at.strftime("%B %d %Y - %l:%M %p") %>" readonly></li>
           <li class="list-group-item">Created By: <input class="form-control" type="text" placeholder="<%= @playtest.user.name %>" readonly></li>
         </ul>
       </div>
@@ -88,6 +88,7 @@
               <td>Name</td>
               <td>Email</td>
               <td>Status</td>
+              <td>Submitted Date</td>
               <td>Action/Status</td>
             </tr>
           </thead>
@@ -97,6 +98,7 @@
               <td><%= app.user.name %></td>
               <td><%= app.user.email %></td>
               <td><%= app.status %></td>
+              <td><%= app.created_at.strftime("%B %d %Y - %l:%M %p") %></td>
               <td>
                 <div class="dropdown show">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -138,13 +140,31 @@
       <div class="card-header" id="conf">
         <h5 class="mb-0">
           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Configuration
+            Settings              <i class="fas fa-cog"></i>
           </button>
         </h5>
       </div>
       <div id="collapseThree" class="collapse" aria-labelledby="conf" data-parent="#accordion">
         <div class="card-body">
-          Notes are not currently backed in the cloud... Would you like them to?
+          Playtests by default are <b>push</b> to save in the DB. You can create a backup below.
+          <small class="form-text text-muted">Alert Messages will indicate if the backup was successful.</small><br>
+          <form action="/playtests/<%= params[:id] %>/backup" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <button type="submit" class="btn btn-primary">CREATE BACKUP</button>
+          </form>
+          <hr>
+          Change Ownership of Playtest
+          <small class="form-text text-muted">Select who you wish to become the created of <%=@playtest.name %></small>
+          <form action="/playtests/<%= @playtest.id %>/owner" method="post" id="owner">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input name="_method" type="hidden" value="patch" />
+            <select class="form-control" id="test-name" name="owner[user_id]">
+              <% @user.each do |roles| %>
+                  <option value="<%= roles.id %>"><%= roles.name %></option>
+              <% end %>
+            </select><br><br>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-sync"></i> Update Owner</button>
+          </form>
         </div>
       </div>
     </div>
