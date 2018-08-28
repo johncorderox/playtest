@@ -1,4 +1,4 @@
-=== Playtest
+## Playtest
 
 A playtesting suite testing operations mimicking Squanch Games User-Test flow.
 
